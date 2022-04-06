@@ -20,9 +20,20 @@ Run, komorebic.exe workspace-name 0 3 matrix, , Hide
 Run, komorebic.exe workspace-name 0 4 floaty, , Hide
 
 ; Set the padding of the different workspaces (monitor, workspace, padding_size)
+Run, komorebic.exe workspace-padding 0 0 0, , Hide ; Workspace 1
+Run, komorebic.exe container-padding 0 0 8, , Hide
+Run, komorebic.exe workspace-padding 1 0 0, , Hide
+Run, komorebic.exe container-padding 1 0 8, , Hide
+Run, komorebic.exe workspace-padding 0 1 0, , Hide ; Workspace 2
+Run, komorebic.exe container-padding 0 1 8, , Hide
+Run, komorebic.exe workspace-padding 1 1 0, , Hide
+Run, komorebic.exe container-padding 1 1 8, , Hide
+Run, komorebic.exe workspace-padding 0 2 0, , Hide ; Workspace 3
+Run, komorebic.exe container-padding 0 2 8, , Hide
+Run, komorebic.exe workspace-padding 1 2 0, , Hide
+Run, komorebic.exe container-padding 1 2 8, , Hide
 Run, komorebic.exe workspace-padding 0 3 0, , Hide ; Workspace 4
 Run, komorebic.exe container-padding 0 3 0, , Hide
-
 Run, komorebic.exe workspace-padding 1 3 0, , Hide
 Run, komorebic.exe container-padding 1 3 0, , Hide
 
@@ -55,6 +66,13 @@ Run, komorebic.exe float-rule exe 1Password.exe, , Hide
 
 ; Always manage forcibly these applications that don't automatically get picked up by komorebi
 Run, komorebic.exe manage-rule exe TIM.exe, , Hide
+
+; Manage Microsoft Office applications
+Run, komorebic.exe float-rule class _WwB, , Hide
+Run, komorebic.exe identify-layered-application exe WINWORD.EXE, , Hide
+Run, komorebic.exe identify-border-overflow-application exe WINWORD.EXE, , Hide
+Run, komorebic.exe identify-layered-application exe FoxitPDFReader.exe, , Hide
+Run, komorebic.exe identify-border-overflow-application exe FoxitPDFReader.exe, , Hide
 
 ; Identify applications that close to the tray
 Run, komorebic.exe identify-tray-application exe Discord.exe, , Hide
@@ -316,4 +334,9 @@ Run, komorebic.exe cycle-workspace next, , Hide
 return
 !+u::
 Run, komorebic.exe cycle-workspace previous, , Hide
+return
+
+; Restore all windows
+!+^r::
+Run, komorebic.exe restore-windows, , Hide
 return
